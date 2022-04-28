@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../hooks/firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
-    const [errorMessage, setErrorMessage] = useState('');
 
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
@@ -25,6 +23,8 @@ const Register = () => {
         createUserWithEmailAndPassword(userEmail, userPassword)
 
         event.target.reset();
+
+        toast('Registerd successfully!')
     }
 
 
@@ -50,9 +50,11 @@ const Register = () => {
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group> */}
                 <Button variant="primary" size='small' type="submit">
-                    Submit
+                    Register
                 </Button>
             </Form>
+
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
