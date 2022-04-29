@@ -26,19 +26,16 @@ const Header = () => {
                                 ?
 
                                 <div>
-                                    <NavDropdown.Item as={Link} to="/manageitems">Manage Items</NavDropdown.Item>
+                                    <NavDropdown.Item className='pb-0' as={Link} to="/manageitems">Manage Items</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/additem">Add Item</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/myitems">My Items</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <Button onClick={logOut}>Sign Out</Button>
+                                    <Button className='w-100 m-0 rounded-0' onClick={logOut}>Sign Out</Button>
                                 </div>
                                 :
 
                                 <div>
                                     <NavDropdown.Item as={Link} to="/login">Login</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/register">Register</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item as={Link} to="/">Separated link</NavDropdown.Item>
                                 </div>}
 
 

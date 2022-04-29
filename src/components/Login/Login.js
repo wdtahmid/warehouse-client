@@ -3,10 +3,17 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../hooks/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+
     const [user] = useAuthState(auth);
+
     const [
         signInWithEmailAndPassword,
         error,
@@ -30,7 +37,9 @@ const Login = () => {
 
     }
 
-
+    if (user) {
+        navigate(from, { replace: true });
+    }
 
     return (
         <div className='w-25 mx-auto text-start mt-5'>
