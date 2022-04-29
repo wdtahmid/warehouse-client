@@ -18,7 +18,7 @@ const InventoryUi = ({ inventory, deleteThisItem }) => {
                         <Card.Text>Supplier: {supplier}</Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button onClick={() => deleteThisItem(inventory)} className='w-100'>Delete</Button>
+                        <Button onClick={() => deleteThisItem(inventory._id)} className='w-100'>Delete</Button>
                     </Card.Footer>
                 </Card>
             </CardGroup>

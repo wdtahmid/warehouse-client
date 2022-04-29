@@ -21,8 +21,22 @@ const ManageInventories = () => {
 
 
     //delete item
-    const deleteThisItem = (inventories) => {
-        console.log(inventories._id);
+    const deleteThisItem = (id) => {
+        const url = `http://localhost:5000/manageinventories/${id}`;
+
+        fetch(url, {
+            'method': 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    const remaining = inventories.filter(i => i._id !== id)
+                    console.log('Item deleted');
+                    setInventories(remaining);
+                    console.log(data);
+                }
+            })
+
     }
 
     return (
