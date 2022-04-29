@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import auth from '../../hooks/firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
 
@@ -53,7 +54,7 @@ const Register = () => {
                     Register
                 </Button>
             </Form>
-
+            <p>Already have an account? Please <Link to='/login'>Sign In</Link > </p>
             <ToastContainer></ToastContainer>
         </div>
     );

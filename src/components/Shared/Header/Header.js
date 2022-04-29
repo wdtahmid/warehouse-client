@@ -29,7 +29,7 @@ const Header = () => {
                                     <NavDropdown.Item className='pb-0' as={Link} to="/manageitems">Manage Items</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/additem">Add Item</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/myitems">My Items</NavDropdown.Item>
-                                    <Button className='w-100 m-0 rounded-0' onClick={logOut}>Sign Out</Button>
+                                    <Button className='w-100 mt-2 rounded-0' onClick={logOut}>Sign Out</Button>
                                 </div>
                                 :
 

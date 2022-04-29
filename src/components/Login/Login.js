@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../hooks/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -65,6 +65,7 @@ const Login = () => {
                     Submit
                 </Button>
             </Form>
+            <p>Don't you have an account? Please <Link to='/register'>Register</Link > </p>
             <p>{error?.message}</p>
         </div>
     );
