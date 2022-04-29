@@ -26,6 +26,9 @@ const Header = () => {
                                 ?
 
                                 <div>
+                                    <NavDropdown.Item as={Link} to="/manageitems">Manage Items</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/additem">Add Item</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/myitems">My Items</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <Button onClick={logOut}>Sign Out</Button>
                                 </div>
