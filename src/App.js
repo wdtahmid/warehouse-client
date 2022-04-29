@@ -7,6 +7,7 @@ import Blogs from './components/Blogs/Blogs';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import ManageItems from './components/ManageItems/ManageItems';
+import ManageInventories from './components/ManageInventories/ManageInventories'
 import MyItems from './components/MyItems/MyItems';
 import Register from './components/Register/Register';
 import Footer from './components/Shared/Footer/Footer';
@@ -25,6 +26,7 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>
         <Route path='/additem' element={<AddItem></AddItem>}></Route>
+        <Route path='/manageinventories' element={<ManageInventories></ManageInventories>}></Route>
 
         <Route path='/myitems' element={
           <RequireAuth>
