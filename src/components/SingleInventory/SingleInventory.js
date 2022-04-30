@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Stack } from 'react-bootstrap';
+import { Button, Card, Form, Stack } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 const SingleInventory = () => {
@@ -15,14 +15,12 @@ const SingleInventory = () => {
             .then(data => setInventory(data))
     }, [id])
 
-    const handleDeliverd = () => {
-        console.log('Deliverd');
-    }
+
     return (
         <div>
             <div className='containar-fluid py-5 bg-dark'>
                 <h1 className='mt-5 text-uppercase text-white'>{inventory.productName}</h1>
-                <Button onClick={handleDeliverd} variant="outline-info" className='mb-5 mt-2'>Deliverd This Item</Button>
+                <Button variant="outline-info" className='mb-5 mt-2'>Delivered</Button>
             </div>
             <div className='container py-5'>
                 <div className='row'>
@@ -38,7 +36,13 @@ const SingleInventory = () => {
                             <Card.Subtitle as='h5'>Supplier: {inventory.supplier}</Card.Subtitle>
                         </Stack>
                         <p className='mt-5 lh-lg'>{inventory.description}</p>
-                        <Button onClick={handleDeliverd} variant="outline-info" className='mb-5 mt-2'>Deliverd This Item</Button>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Control type="number" name='restock' placeholder="Restock Quantity" />
+                            </Form.Group>
+                            <Button variant="outline-info" type='submit' className='mb-5 mt-2'>Restock This Item</Button>
+                        </Form>
+
                     </div>
                 </div>
             </div>

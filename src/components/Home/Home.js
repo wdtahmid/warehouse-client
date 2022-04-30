@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Carousel, Container } from 'react-bootstrap';
+import { Button, Carousel, Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import banner1 from '../../../src/images/banner/banner-1.jpg';
 import banner2 from '../../../src/images/banner/banner2.jpg';
 import InventorySection from './InventorySection/InventorySection';
@@ -7,6 +8,10 @@ import InventorySection from './InventorySection/InventorySection';
 const Home = () => {
     const [index, setIndex] = useState(0);
 
+    const navigate = useNavigate();
+    const goToManageInventory = () => {
+        navigate('/manageinventories')
+    }
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
@@ -41,6 +46,9 @@ const Home = () => {
                     <h1 className='text-info'>Brouse Our Stock</h1>
                     <InventorySection></InventorySection>
                 </Container>
+            </div>
+            <div className='py-5 bg-light'>
+                <Button onClick={goToManageInventory}>Manage Inventories</Button>
             </div>
         </div >
 
