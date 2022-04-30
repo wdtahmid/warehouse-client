@@ -10,6 +10,7 @@ const ManageInventories = () => {
         navigate('/additem')
     }
 
+    //fetching all inventorie and showing on UI
     const [inventories, setInventories] = useState([]);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const ManageInventories = () => {
     }, [])
 
 
-    //delete item
+    //delete item from the database and showing rest on the UI
     const deleteThisItem = (id) => {
         const url = `http://localhost:5000/manageinventories/${id}`;
 
@@ -31,9 +32,7 @@ const ManageInventories = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     const remaining = inventories.filter(i => i._id !== id)
-                    console.log('Item deleted');
                     setInventories(remaining);
-                    console.log(data);
                 }
             })
 

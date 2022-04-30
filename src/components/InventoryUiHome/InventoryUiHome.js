@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, CardGroup } from 'react-bootstrap';
 
-const InventoryUi = ({ inventory, deleteThisItem }) => {
+const InventoryUiHome = ({ inventory, updateThisItem }) => {
 
     const { productName, image, productPrice, quantity, supplier } = inventory;
 
@@ -18,7 +18,7 @@ const InventoryUi = ({ inventory, deleteThisItem }) => {
                         <Card.Text>Supplier: {supplier}</Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button onClick={() => deleteThisItem(inventory._id)} className='w-100'>Delete</Button>
+                        <Button onClick={() => updateThisItem(inventory._id)} className='w-100'>Update</Button>
                     </Card.Footer>
                 </Card>
             </CardGroup>
@@ -26,4 +26,4 @@ const InventoryUi = ({ inventory, deleteThisItem }) => {
     );
 };
 
-export default InventoryUi;
+export default InventoryUiHome;

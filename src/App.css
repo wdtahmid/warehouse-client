@@ -2,6 +2,24 @@
   padding-bottom: 0 !important;
 }
 
+.carousel-caption {
+  top: 50% !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+}
+
+.carousel-caption h1 {
+  font-size: 80px;
+  text-shadow: 1px 2px 3px #282c34;
+}
+
 .App {
   text-align: center;
 }

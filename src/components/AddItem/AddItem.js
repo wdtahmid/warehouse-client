@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddItem = () => {
-    const [success, setSuccess] = useState('')
 
     const handleInsetInventory = event => {
         event.preventDefault();
@@ -35,7 +35,7 @@ const AddItem = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    setSuccess('the item has benn added successfully!')
+                    toast('The item has benn added successfully!')
                 }
             })
         event.target.reset();
@@ -70,7 +70,7 @@ const AddItem = () => {
                 </Button>
             </Form>
 
-            <p>{success}</p>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
