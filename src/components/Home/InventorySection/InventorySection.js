@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import InventoryUi from '../../InventoryUi/InventoryUi';
 import InventoryUiHome from '../../InventoryUiHome/InventoryUiHome';
 
 const InventorySection = () => {

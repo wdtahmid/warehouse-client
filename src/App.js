@@ -13,6 +13,7 @@ import Register from './components/Register/Register';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import RequireAuth from './hooks/RequireAuth';
+import SingleInventory from './components/SingleInventory/SingleInventory';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>
         <Route path='/additem' element={<AddItem></AddItem>}></Route>
         <Route path='/manageinventories' element={<ManageInventories></ManageInventories>}></Route>
+        <Route path='/inventory/:id' element={<SingleInventory></SingleInventory>}></Route>
 
         <Route path='/myitems' element={
           <RequireAuth>
