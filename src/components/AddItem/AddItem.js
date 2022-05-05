@@ -46,37 +46,42 @@ const AddItem = () => {
         event.target.reset();
     }
     return (
-        <div className='w-25 mx-auto mt-5'>
-            <h2>Add item</h2>
+        <div className='mb-5'>
+            <div className='containar-fluid py-5 bg-dark'>
+                <h1 className='my-5 text-uppercase text-white'>Add New Item</h1>
+            </div>
+            <div className='w-25 mx-auto mt-5'>
 
-            <Form onSubmit={handleInsetInventory}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form onSubmit={handleInsetInventory}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
 
-                    <Form.Control type="productName" name='productName' placeholder="Product Name" />
-                </Form.Group>
+                        <Form.Control type="productName" name='productName' placeholder="Product Name" />
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="number" name='productPrice' placeholder="Product Price" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="text" name='image' placeholder="Image URl" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control as="textarea" name='description' row='4' placeholder="A short description fo product" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="number" name='quantity' placeholder="Quantity" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="text" name='supplier' placeholder="Supplier Name" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Insert This Product
-                </Button>
-            </Form>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='productPrice' placeholder="Product Price" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="text" name='image' placeholder="Image URl" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control as="textarea" name='description' row='4' placeholder="A short description fo product" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='quantity' placeholder="Quantity" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="text" name='supplier' placeholder="Supplier Name" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Add This Product
+                    </Button>
+                </Form>
 
-            <ToastContainer></ToastContainer>
+                <ToastContainer></ToastContainer>
+            </div>
         </div>
+
     );
 };
 
