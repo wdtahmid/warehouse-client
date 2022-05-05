@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
+import auth from '../../hooks/firebase.init';
 
 const AddItem = () => {
+    const [user] = useAuthState(auth)
 
     const handleInsetInventory = event => {
         event.preventDefault();
@@ -13,6 +16,7 @@ const AddItem = () => {
         const description = event.target.description.value;
         const quantity = event.target.quantity.value;
         const supplier = event.target.supplier.value;
+        const email = user?.email;
 
         const inventories = {
             productName,
@@ -21,6 +25,7 @@ const AddItem = () => {
             description,
             quantity,
             supplier,
+            email
         }
 
         const url = 'http://localhost:5000/additem';

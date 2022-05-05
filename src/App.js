@@ -14,6 +14,7 @@ import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import RequireAuth from './hooks/RequireAuth';
 import SingleInventory from './components/SingleInventory/SingleInventory';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
 
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

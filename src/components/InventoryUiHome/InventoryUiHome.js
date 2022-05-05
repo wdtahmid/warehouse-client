@@ -12,7 +12,7 @@ const InventoryUiHome = ({ inventory, updateThisItem }) => {
     }
 
     return (
-        <div className='col-lg-3 col-md-6'>
+        <div className='col-lg-4 col-md-6'>
             <CardGroup bg='light' className='mt-4'>
                 <Card border='info' className='pt-4'>
                     <Card.Title>{productName}</Card.Title>

@@ -31,8 +31,11 @@ const ManageInventories = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    const remaining = inventories.filter(i => i._id !== id)
-                    setInventories(remaining);
+                    const deleteConfirm = window.confirm('Do you want to delete this item?');
+                    if (deleteConfirm) {
+                        const remaining = inventories.filter(i => i._id !== id)
+                        setInventories(remaining);
+                    }
                 }
             })
 

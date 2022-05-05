@@ -59,3 +59,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media all and (max-width:768px) {
+  .w-sm-100 {
+    width: 100 !important;
+  }
+}
