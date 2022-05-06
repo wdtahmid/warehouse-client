@@ -1,3 +1,8 @@
+# Welcome to you in Smart Warehouse react app
+This is the app for stock of your smart phones products. You are able to upload your item easly with details information.
+
+# Tecknowlogy Used:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
