@@ -15,6 +15,7 @@ import Header from './components/Shared/Header/Header';
 import RequireAuth from './hooks/RequireAuth';
 import SingleInventory from './components/SingleInventory/SingleInventory';
 import { ToastContainer } from 'react-toastify';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -41,8 +42,10 @@ function App() {
             <MyItems></MyItems>
           </RequireAuth>
         }></Route>
+        <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
 
       </Routes>
+
       <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>

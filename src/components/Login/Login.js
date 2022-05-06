@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Button, Col, Form, Row, Spinner } from 'react-bootstrap';
+import { useSignInWithEmailAndPassword, useSignInWithFacebook } from 'react-firebase-hooks/auth';
 import auth from '../../hooks/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Facebook, Google } from 'react-bootstrap-icons';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const Login = () => {
 
@@ -12,61 +14,75 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
 
-    const [user] = useAuthState(auth);
+    const [authUser] = useAuthState(auth);
+    if (authUser) {
+        navigate(from, { replace: true });
+    }
 
-    const [
-        signInWithEmailAndPassword,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword, user, loading, passwordSignInError,] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
+
+    let errorMessage;
+    if (passwordSignInError || googleError) {
+        errorMessage = <p className='text-danger'>Error: {passwordSignInError?.message || googleError?.message}</p>
+    }
+
+
+    if (loading || googleLoading) {
+
+        return <p className='text-center vh-100 d-flex align-items-center justify-content-center'><Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner></p>;
+    }
+
+    if (user || googleUser) {
+        return (
+            <div>
+                <p>Signed In User: {user.email}</p>
+            </div>
+        );
+    }
 
     const handleSignInUser = e => {
         e.preventDefault();
-
         const userEmail = e.target.email.value;
         const userPassword = e.target.password.value;
 
         signInWithEmailAndPassword(userEmail, userPassword)
-        if (user) {
-            return (
-                <div>
-                    <p>Signed In User: {user.email}</p>
-                </div>
-            );
-        }
-        e.target.reset();
 
-    }
 
-    if (user) {
-        navigate(from, { replace: true });
+        // e.target.reset();
+
     }
 
     return (
-        <div className='w-25 mx-auto text-start mt-5'>
-            <h2>Please Login</h2>
-            <Form onSubmit={handleSignInUser}>
+        <div className='login-form text-start mx-auto py-5 my-5'>
+            <h2 className='text-start'>Please Login</h2>
+
+            <Form className='my-5' onSubmit={handleSignInUser}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        <p>{user?.email}</p>
-                        We'll never share your email with anyone else.
-                    </Form.Text>
+                    {errorMessage}
+                    <Form.Control className='w-full' type="email" name='email' placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
                 <Button variant="primary" size='small' type="submit">
                     Submit
                 </Button>
             </Form>
-            <p>Don't you have an account? Please <Link to='/register'>Register</Link > </p>
-            <p>{error?.message}</p>
+            <p className='text-start'>Don't you have an account? Please <Link to='/register'>Register</Link > </p>
+            <Row className='text-start'>
+                <Col sm={true}>Or, You can use below options!</Col>
+            </Row>
+            <Row className='mt-2'>
+                <Col sm={true}>
+                    <Button onClick={() => signInWithGoogle()}><Google></Google></Button>{' '}
+                    <Button onClick={() => signInWithFacebook()}><Facebook></Facebook></Button>
+                </Col>
+            </Row>
         </div>
     );
 };

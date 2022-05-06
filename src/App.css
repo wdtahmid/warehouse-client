@@ -46,6 +46,12 @@
   color: white;
 }
 
+.login-form,
+.register-form {
+  width: 25%;
+  margin: 0 auto;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -63,5 +69,21 @@
 @media all and (max-width:768px) {
   .w-sm-100 {
     width: 100 !important;
+  }
+}
+
+@media all and (max-width:1080px) {
+
+  .login-form,
+  .register-form {
+    width: 50%;
+  }
+}
+
+@media all and (max-width:768px) {
+
+  .login-form,
+  .register-form {
+    width: 95%;
   }
 }

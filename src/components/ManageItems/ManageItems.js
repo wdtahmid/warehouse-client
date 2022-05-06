@@ -37,7 +37,7 @@ const ManageItems = () => {//fetching all inventorie and showing on UI
     return (
         <div>
             <div className='containar-fluid py-5 bg-dark'>
-                <h1 className='mt-5 text-uppercase text-white'>Manage Items</h1>
+                <h1 className='my-5 text-uppercase text-white'>Manage Items</h1>
             </div>
             <div className='container'>
                 <div className="row mt-5 mb-5">            {
