@@ -4,9 +4,12 @@ import { ArrowRepeat, Truck, Wifi } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom';
 import banner1 from '../../../src/images/banner/banner-1.jpg';
 import banner2 from '../../../src/images/banner/banner2.jpg';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 import InventorySection from './InventorySection/InventorySection';
 
+
 const Home = () => {
+    <PageTitle title='Home'></PageTitle>
     const [index, setIndex] = useState(0);
 
     const navigate = useNavigate();
