@@ -1,7 +1,28 @@
-# Welcome to you in Smart Warehouse react app
-This is the app for stock of your smart phones products. You are able to upload your item easly with details information.
+# SMART WAREHOUSE
+
+## Welcome to you in Smart Warehouse react app
+This is the app for stock of your smart phones products. You are able to upload your item easly with details information. You are also able to update your inventory / stock items.
 
 # Tecknowlogy Used:
+I have used secured mostly famouse technolowgy in this app for front-end and back-end.
+
+## Front-End
+* Reactjs
+* React Router
+* React Bootstrap
+* React Bootstrap Icons
+* Firebase
+* React Firebase Hooks
+* Reactn Helmet
+* React Toastify
+* Axios
+
+## Back-End
+* Node Js
+* Express Js
+* Mongodb Atlas
+* JWT
+
 
 # Getting Started with Create React App
 
