@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import InventoryUiHome from '../../InventoryUiHome/InventoryUiHome';
 
 const InventorySection = () => {
@@ -6,9 +8,23 @@ const InventorySection = () => {
 
     useEffect(() => {
         const url = 'http://localhost:5000/manageinventories';
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setInventories(data))
+        const getTheInventory = async () => {
+
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            try {
+                await axios.get(url)
+                    .then(response => {
+                        setInventories(response.data);
+                    })
+
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+        getTheInventory();
     }, [])
 
     return (
