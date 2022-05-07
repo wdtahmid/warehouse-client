@@ -14,7 +14,7 @@ const ManageInventories = () => {
     const [inventories, setInventories] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:5000/manageinventories';
+        const url = 'https://powerful-stream-86951.herokuapp.com/manageinventories';
         fetch(url)
             .then(res => res.json())
             .then(data => setInventories(data))
@@ -23,7 +23,7 @@ const ManageInventories = () => {
 
     //delete item from the database and showing rest on the UI
     const deleteThisItem = (id) => {
-        const url = `http://localhost:5000/manageinventories/${id}`;
+        const url = `https://powerful-stream-86951.herokuapp.com/manageinventories/${id}`;
 
         fetch(url, {
             'method': 'DELETE',

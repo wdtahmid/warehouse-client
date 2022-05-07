@@ -7,7 +7,7 @@ const InventorySection = () => {
     const [inventories, setInventories] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:5000/manageinventories';
+        const url = 'https://powerful-stream-86951.herokuapp.com/manageinventories';
         const getTheInventory = async () => {
 
             <Spinner animation="border" role="status">

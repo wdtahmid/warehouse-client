@@ -28,7 +28,7 @@ const AddItem = () => {
             email
         }
 
-        const url = 'http://localhost:5000/additem';
+        const url = 'https://powerful-stream-86951.herokuapp.com/additem';
         fetch(url, {
             method: 'POST',
             headers: {

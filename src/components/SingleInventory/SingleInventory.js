@@ -15,7 +15,7 @@ const SingleInventory = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${paramsId}`;
+        const url = `https://powerful-stream-86951.herokuapp.com/inventory/${paramsId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setInventory(data))
@@ -24,7 +24,7 @@ const SingleInventory = () => {
 
     const deliverQuantity = async () => {
         const updatedQuantity = parseInt(inventory.quantity) - 1;
-        const url = `http://localhost:5000/inventory-deliverd/${paramsId}`;
+        const url = `https://powerful-stream-86951.herokuapp.com/inventory-deliverd/${paramsId}`;
         const inventories = {
             productName: inventory.productName,
             image: inventory.image,
@@ -49,7 +49,7 @@ const SingleInventory = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:5000/inventory/${paramsId}`);
+            const response = await axios.get(`https://powerful-stream-86951.herokuapp.com/inventory/${paramsId}`);
             setInventory(response.data);
         } catch (error) {
             console.error(error);
@@ -61,7 +61,7 @@ const SingleInventory = () => {
         const stockQuantity = parseInt(event.target.restock.value);
         if (stockQuantity > 0) {
             const paramsId = params.id;
-            const url = `http://localhost:5000/inventory-restock/${paramsId}`;
+            const url = `https://powerful-stream-86951.herokuapp.com/inventory-restock/${paramsId}`;
             const restockInventories = {
                 productName: inventory.productName,
                 image: inventory.image,
@@ -84,7 +84,7 @@ const SingleInventory = () => {
             }
 
             try {
-                const response = await axios.get(`http://localhost:5000/inventory/${paramsId}`);
+                const response = await axios.get(`https://powerful-stream-86951.herokuapp.com/inventory/${paramsId}`);
                 setInventory(response.data);
             } catch (error) {
                 console.error(error);

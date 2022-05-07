@@ -51,7 +51,7 @@ const Login = () => {
 
         signInWithEmailAndPassword(userEmail, userPassword)
 
-        const response = await axios.post('http://localhost:5000/login', { userEmail });
+        const response = await axios.post('https://powerful-stream-86951.herokuapp.com/login', { userEmail });
         console.log(response.data);
         localStorage.setItem('accessToken', response.data);
         navigate(from, { replace: true });
