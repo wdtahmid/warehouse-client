@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Facebook, Google } from 'react-bootstrap-icons';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+const axios = require('axios');
 
 const Login = () => {
 
@@ -15,10 +16,10 @@ const Login = () => {
 
 
     const [authUser] = useAuthState(auth);
+
     if (authUser) {
         navigate(from, { replace: true });
     }
-
     const [signInWithEmailAndPassword, user, loading, passwordSignInError,] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
@@ -44,15 +45,18 @@ const Login = () => {
         );
     }
 
-    const handleSignInUser = e => {
+    const handleSignInUser = async e => {
         e.preventDefault();
         const userEmail = e.target.email.value;
         const userPassword = e.target.password.value;
 
         signInWithEmailAndPassword(userEmail, userPassword)
 
+        const response = await axios.post('http://localhost:5000/login', { userEmail });
+        localStorage.setItem('accessToken', response.data)
+        navigate(from, { replace: true });
 
-        // e.target.reset();
+        e.target.reset();
 
     }
 
