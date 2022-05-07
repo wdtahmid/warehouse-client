@@ -14,10 +14,8 @@ const InventorySection = () => {
                 <span className="visually-hidden">Loading...</span>
             </Spinner>
             try {
-                await axios.get(url)
-                    .then(response => {
-                        setInventories(response.data);
-                    })
+                const { data } = await axios.get(url)
+                setInventories(data);
 
             }
             catch (error) {

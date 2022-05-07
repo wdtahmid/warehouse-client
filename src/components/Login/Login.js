@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Col, Form, Row, Spinner } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword, useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../hooks/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Facebook, Google } from 'react-bootstrap-icons';
+import { Google } from 'react-bootstrap-icons';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 const axios = require('axios');
 
@@ -22,7 +22,6 @@ const Login = () => {
     }
     const [signInWithEmailAndPassword, user, loading, passwordSignInError,] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
 
     let errorMessage;
     if (passwordSignInError || googleError) {
@@ -53,7 +52,8 @@ const Login = () => {
         signInWithEmailAndPassword(userEmail, userPassword)
 
         const response = await axios.post('http://localhost:5000/login', { userEmail });
-        localStorage.setItem('accessToken', response.data)
+        console.log(response.data);
+        localStorage.setItem('accessToken', response.data);
         navigate(from, { replace: true });
 
         e.target.reset();
@@ -83,8 +83,7 @@ const Login = () => {
             </Row>
             <Row className='mt-2'>
                 <Col sm={true}>
-                    <Button onClick={() => signInWithGoogle()}><Google></Google></Button>{' '}
-                    <Button onClick={() => signInWithFacebook()}><Facebook></Facebook></Button>
+                    <Button onClick={() => signInWithGoogle()}><Google></Google></Button>
                 </Col>
             </Row>
         </div>

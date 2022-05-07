@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import auth from '../../hooks/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button, Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 const axios = require('axios');
 
 const MyItems = () => {
@@ -9,23 +11,35 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [myItems, setMyItems] = useState([]);
     const email = user.email;
+    const navigate = useNavigate();
     useEffect(() => {
 
-        const url = `http://localhost:5000/myitems?email=${email}`;
         const getMyItems = async () => {
-            await axios.get(url, {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-                .then(response => {
+            const url = `http://localhost:5000/myitems?email=${email}`;
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                setMyItems(data)
+                /* .then(response => {
                     setMyItems(response.data);
                     console.log(response.data);
-                })
-        }
+                }) */
+            }
+            catch (error) {
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login')
+                }
+            }
 
+        }
         getMyItems();
-    }, [email]);
+
+
+    }, [email, navigate]);
 
     const deletFromMyItems = async (id) => {
 
