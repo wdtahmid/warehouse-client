@@ -17,19 +17,18 @@ const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [sendEmailVerification, verifyError] = useSendEmailVerification(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
 
-    if (user || googleUser || facebookUser) {
+    if (user || googleUser) {
         navigate(from, { replace: true });
     }
 
     let errorEle;
 
-    if (error || verifyError || googleError || facebookError) {
+    if (error || verifyError || googleError) {
         errorEle = <p>{error?.message}</p>
     }
 
-    if (loading || googleLoading || facebookLoading) {
+    if (loading || googleLoading) {
         return <p className='text-center vh-100 d-flex align-items-center justify-content-center'><Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
         </Spinner></p>;
@@ -92,8 +91,7 @@ const Register = () => {
             </Row>
             <Row className='mt-2'>
                 <Col sm={true}>
-                    <Button onClick={() => signInWithGoogle()}><Google></Google></Button>{' '}
-                    <Button onClick={() => signInWithFacebook()}><Facebook></Facebook></Button>
+                    <Button onClick={() => signInWithGoogle()}><Google></Google></Button>
                 </Col>
             </Row>
         </div>

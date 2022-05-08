@@ -74,7 +74,7 @@ const Login = () => {
                     <Form.Control type="password" name='password' placeholder="Password" />
                 </Form.Group>
                 <Button variant="primary" size='small' type="submit">
-                    Submit
+                    Log In
                 </Button>
             </Form>
             <p className='text-start'>Don't you have an account? Please <Link to='/register'>Register</Link > </p>
