@@ -20,7 +20,7 @@ const Home = () => {
         setIndex(selectedIndex);
     };
     return (
-        <div>
+        <>
             <Carousel activeIndex={index} onSelect={handleSelect}>
                 <Carousel.Item>
                     <img
@@ -45,11 +45,9 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            <div>
-                <Container className='py-5'>
-                    <h1 className='text-primary'>Brouse Our Stock</h1>
-                    <InventorySection></InventorySection>
-                </Container>
+            <div className='my-5 py-5'>
+                <h1 className='text-primary'>Brouse Our Stock</h1>
+                <InventorySection></InventorySection>
             </div>
             <div className='py-5 bg-light'>
                 <Button onClick={goToManageInventory}>Manage Inventories</Button>
@@ -106,7 +104,7 @@ const Home = () => {
 
                 </Row>
             </Container>
-        </div >
+        </ >
 
     );
 };

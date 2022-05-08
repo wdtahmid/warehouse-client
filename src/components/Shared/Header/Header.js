@@ -14,13 +14,12 @@ const Header = () => {
     return (
         <Navbar bg="light" expand="lg" sticky='top'>
             <Container>
-                <Navbar.Brand as={Link} to="/">Mobile Store</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Smart Warehoues</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
-                        <Nav.Link as={Link} to="/aboutus">Aboute Us</Nav.Link>
                         <Nav.Link as={Link} to="/manageinventories">Manage Inventories</Nav.Link>
 
                         <NavDropdown title="Account" id="basic-nav-dropdown">

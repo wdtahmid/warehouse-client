@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -12,15 +13,27 @@ const ManageInventories = () => {
 
     //fetching all inventorie and showing on UI
     const [inventories, setInventories] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        const url = 'https://powerful-stream-86951.herokuapp.com/manageinventories';
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setInventories(data))
+
+        async function getInvetories() {
+
+            const url = 'https://powerful-stream-86951.herokuapp.com/manageinventories';
+
+            const recievedInventories = await axios.get(url)
+            setInventories(recievedInventories.data);
+            setLoading(false);
+
+        }
+
+        getInvetories()
+
+
     }, [])
 
 
+    console.log(isLoading);
     //delete item from the database and showing rest on the UI
     const deleteThisItem = (id) => {
         const url = `https://powerful-stream-86951.herokuapp.com/manageinventories/${id}`;
@@ -42,21 +55,16 @@ const ManageInventories = () => {
     }
 
     return (
-        <div>
+        <div className='my-5'>
             <div className='containar-fluid py-5 bg-dark'>
                 <h1 className='mt-5 text-uppercase text-white'>Manage Inventoies</h1>
                 <Button onClick={addNewItem} variant="outline-info" className='mb-5 mt-2'>Add New Item</Button>
             </div>
-            <div className='container'>
-                <div className="row mt-5 mb-5">            {
-                    inventories.map(inventory => <InventoryUi
-                        key={inventory._id}
-                        inventory={inventory}
-                        deleteThisItem={deleteThisItem}
-                    ></InventoryUi>)
-                }
-                </div>
-            </div>
+            <InventoryUi
+                inventories={inventories}
+                isLoading={isLoading}
+                deleteThisItem={deleteThisItem}
+            ></InventoryUi>
         </div>
     );
 };

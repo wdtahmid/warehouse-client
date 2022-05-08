@@ -66,17 +66,16 @@
   }
 }
 
-@media all and (max-width:768px) {
-  .w-sm-100 {
-    width: 100 !important;
-  }
-}
 
 @media all and (max-width:1080px) {
 
   .login-form,
   .register-form {
     width: 50%;
+  }
+
+  .carousel-caption h1 {
+    font-size: 40px;
   }
 }
 
@@ -85,5 +84,13 @@
   .login-form,
   .register-form {
     width: 95%;
+  }
+
+  .w-sm-100 {
+    width: 100 !important;
+  }
+
+  .carousel-caption h1 {
+    font-size: 30px;
   }
 }
