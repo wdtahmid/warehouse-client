@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row, Spinner } from 'react-bootstrap';
 import auth from '../../hooks/firebase.init';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Facebook, Google } from 'react-bootstrap-icons';
+import { Google } from 'react-bootstrap-icons';
 
 const Register = () => {
 
